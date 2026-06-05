@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - PDF to Markdown{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6 col-lg-5">
+        <div class="card card-hover">
+            <div class="card-body p-5">
+                <div class="text-center mb-4">
+                    <i class="bi bi-person-circle fs-1 text-primary"></i>
+                    <h2 class="fw-bold mt-2">Welcome Back</h2>
+                    <p class="text-muted">Sign in to access your conversions</p>
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    {% if form.errors %}
+                        <div class="alert alert-danger p-2">
+                            <small>Invalid username or password.</small>
+                        </div>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                        <input type="text" name="{{ form.username.name }}" class="form-control" id="{{ form.username.id_for_label }}" required autofocus>
+                    </div>
+                    <div class="mb-4">
+                        <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+                        <input type="password" name="{{ form.password.name }}" class="form-control" id="{{ form.password.id_for_label }}" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Sign In</button>
+                </form>
+                
+                <div class="mt-4 text-center">
+                    <small class="text-muted">Default login: admin / admin123</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
