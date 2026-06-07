@@ -1,114 +1,175 @@
 # Django PDF to Markdown Converter
 
-A web application built with Django that allows users to upload PDF files and instantly convert them into Markdown (`.md`) format using the `pymupdf4llm` library. The app features a beautiful, responsive user interface styled with Bootstrap 5.
+A web application built with Django that allows users to upload PDF files and instantly convert them into Markdown (`.md`) format using the `pymupdf4llm` library. The application features a clean, responsive interface built with Bootstrap 5 and includes user authentication, file management, and Markdown preview functionality.
 
 ## Features
 
-- **User Authentication**: Secure login system for users to manage their personal conversions.
-- **PDF Uploads**: Easy-to-use drag-and-drop interface for uploading PDF documents.
-- **Instant Conversion**: High-quality conversion from PDF to Markdown using `pymupdf4llm`.
-- **File Management**: View past conversions, download original PDFs or generated Markdown files, and securely delete records.
-- **Local Storage**: Files are saved securely to the local `media` directory, keeping the SQLite database fast and lightweight.
-- **Preview & Copy**: Built-in Markdown previewer with a convenient "Copy to Clipboard" feature.
+- User authentication and account management
+- PDF upload and conversion to Markdown
+- High-quality conversion powered by `pymupdf4llm`
+- Conversion history and file management
+- Download original PDFs and generated Markdown files
+- Secure record deletion
+- Local file storage for improved performance
+- Markdown preview and copy-to-clipboard functionality
+- Responsive Bootstrap 5 interface
 
 ## Requirements
 
 - Python 3.10+
-- See `requirements.txt` for specific Python dependencies.
+- Django 5+
+- See `requirements.txt` for the complete list of dependencies
 
 ## Installation
 
-1. **Clone the repository or download the source code:**
-   ```bash
-   git clone <repository-url>
-   cd Djangopdftomd
-   ```
+### 1. Clone the Repository
 
-2. **Create and activate a virtual environment:**
-   ```bash
-   # Windows
-   python -m venv venv
-   .\venv\Scripts\activate
+```bash
+git clone <repository-url>
+cd Djangopdftomd
+```
 
-   # macOS/Linux
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
+### 2. Create and Activate a Virtual Environment
 
-3. **Install the dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
+**Windows**
 
-4. **Set up environment variables:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 
-   A `.env.example` file is included as a template. Follow these steps:
+**macOS/Linux**
 
-   **Step 1 — Copy the example file:**
-   ```bash
-   # Windows
-   copy .env.example .env
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-   # macOS/Linux
-   cp .env.example .env
-   ```
+### 3. Install Dependencies
 
-   **Step 2 — Generate your own Django secret key:**
-   ```bash
-   python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
-   ```
-   This prints a unique secret key. Copy the output.
+```bash
+pip install -r requirements.txt
+```
 
-   **Step 3 — Paste it into your `.env` file:**
-   ```env
-   SECRET_KEY = "paste-your-generated-key-here"
-   DEBUG = True
-   ```
+### 4. Configure Environment Variables
 
-   | Variable     | Description                                                                   | Example Value          |
-   |--------------|-------------------------------------------------------------------------------|------------------------|
-   | `SECRET_KEY` | Django's cryptographic secret key. **Keep this private and never commit it.** | `django-insecure-xxxx` |
-   | `DEBUG`      | Enables Django debug mode. Set to `False` in production.                      | `True` / `False`       |
+Copy the example environment file:
 
-   > **Important:** The `.env` file is listed in `.gitignore` and will **not** be committed to version control.
-   > Every developer and every deployment should have their **own unique** `SECRET_KEY`.
+**Windows**
 
-5. **Run Database Migrations:**
-   ```bash
-   python manage.py makemigrations
-   python manage.py migrate
-   ```
+```bash
+copy .env.example .env
+```
 
-6. **Create a Superuser (Optional, but recommended):**
-   ```bash
-   python manage.py createsuperuser
-   ```
+**macOS/Linux**
+
+```bash
+cp .env.example .env
+```
+
+Generate a Django secret key:
+
+```bash
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
+
+Add the generated key to your `.env` file:
+
+```env
+SECRET_KEY="your-generated-secret-key"
+DEBUG=True
+```
+
+| Variable | Description |
+|-----------|------------|
+| SECRET_KEY | Django's secret key. Keep this private and never commit it to version control. |
+| DEBUG | Enable or disable Django debug mode. Use `False` in production environments. |
+
+> The `.env` file is excluded from version control and should remain private.
+
+### 5. Run Database Migrations
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+### 6. Create an Administrator Account
+
+```bash
+python manage.py createsuperuser
+```
+
+Follow the prompts to create your administrator account.
 
 ## Running the Application
 
-1. **Start the Django development server:**
-   ```bash
-   python manage.py runserver
-   ```
+Start the development server:
 
-2. **Access the web interface:**
-   Open your browser and navigate to `http://127.0.0.1:8000/`.
+```bash
+python manage.py runserver
+```
 
-## Default Credentials
+Open your browser and visit:
 
-If you set up the default superuser during the initial setup via the automated script, you can log in with:
-- **Username:** `admin`
-- **Password:** `admin123`
+```text
+http://127.0.0.1:8000/
+```
 
 ## Directory Structure
 
-- `pdf2md_project/` - Main Django project configuration settings.
-- `converter/` - The core Django app handling models, views, and routing.
-- `templates/` - HTML templates structured with Bootstrap 5.
-- `static/` - Contains custom CSS and other static assets.
-- `media/` - (Created dynamically) Stores uploaded PDFs and converted `.md` files.
+```text
+pdf2md_project/   Main Django project configuration
+converter/        Core application logic
+templates/        HTML templates
+static/           CSS, JavaScript, and static assets
+media/            Uploaded PDFs and generated Markdown files
+```
 
-## Developed By
+## Example Use Cases
 
-[Nascenture](https://www.nascenture.com/) — a software development company specializing in innovative digital solutions.
+- Knowledge base migration
+- Content management systems
+- AI and LLM document processing
+- Internal documentation workflows
+- PDF content extraction pipelines
+- Research document processing
+- Content archiving and migration
+- Document digitization projects
 
+## Why Use Django PDF2Markdown?
+
+Many organizations store valuable information in PDF documents. Converting this content into Markdown makes it easier to search, edit, organize, and integrate with modern applications.
+
+Django PDF2Markdown provides a simple and efficient solution for developers who need PDF-to-Markdown conversion capabilities within Django-powered systems.
+
+## Tech Stack
+
+- Django
+- Python
+- Bootstrap 5
+- SQLite
+- PyMuPDF
+- pymupdf4llm
+
+## Contributing
+
+Contributions, bug reports, and feature requests are welcome.
+
+To contribute:
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
+
+## License
+
+This project is released under the MIT License.
+
+## About the Maintainer
+
+This project is maintained by Nascenture, a software development company specializing in Django development, custom software solutions, web applications, and cloud-based platforms.
+
+- Django Development Services: https://www.nascenture.com/django-development/
+- Company Website: https://www.nascenture.com/
