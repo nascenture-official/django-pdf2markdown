@@ -171,5 +171,5 @@ This project is released under the MIT License.
 
 This project is maintained by Nascenture, a software development company specializing in Django development, custom software solutions, web applications, and cloud-based platforms.
 
-- Django Development Services: https://www.nascenture.com/django-development/
-- Company Website: https://www.nascenture.com/
+- Django Development Services: https://www.nascenture.com/django-development
+- Company Website: https://www.nascenture.com
